@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, use } from 'react';
 import { EmailList } from '@/components/EmailList';
 import { EmailDetail } from '@/components/EmailDetail';
 
@@ -33,8 +33,8 @@ function ErrorScreen({ icon, title, desc }: { icon: string; title: string; desc:
   );
 }
 
-export default function InboxPage({ params }: { params: { token: string } }) {
-  const { token } = params;
+export default function InboxPage({ params }: { params: Promise<{ token: string }> }) {
+  const { token } = use(params);
   const encodedToken = encodeURIComponent(token);
 
   const [emails, setEmails] = useState<Email[]>([]);
