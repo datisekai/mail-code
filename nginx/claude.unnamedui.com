@@ -6,7 +6,7 @@ server {
 
     # Backend API
     location /api/ {
-        proxy_pass         http://127.0.0.1:3005/api/;
+        proxy_pass         http://127.0.0.1:3007/api/;
         proxy_http_version 1.1;
         proxy_set_header   Host              $host;
         proxy_set_header   X-Real-IP         $remote_addr;
@@ -17,7 +17,7 @@ server {
 
     # Frontend (Next.js)
     location / {
-        proxy_pass         http://127.0.0.1:3000;
+        proxy_pass         http://127.0.0.1:3005;
         proxy_http_version 1.1;
         proxy_set_header   Upgrade           $http_upgrade;
         proxy_set_header   Connection        'upgrade';
