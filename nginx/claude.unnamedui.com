@@ -1,11 +1,3 @@
-upstream frontend {
-    server frontend:3000;
-}
-
-upstream backend {
-    server backend:3001;
-}
-
 server {
     listen 80;
     server_name claude.unnamedui.com;
@@ -14,7 +6,7 @@ server {
 
     # Backend API
     location /api/ {
-        proxy_pass         http://backend/api/;
+        proxy_pass         http://127.0.0.1:3001/api/;
         proxy_http_version 1.1;
         proxy_set_header   Host              $host;
         proxy_set_header   X-Real-IP         $remote_addr;
@@ -25,7 +17,7 @@ server {
 
     # Frontend (Next.js)
     location / {
-        proxy_pass         http://frontend;
+        proxy_pass         http://127.0.0.1:3000;
         proxy_http_version 1.1;
         proxy_set_header   Upgrade           $http_upgrade;
         proxy_set_header   Connection        'upgrade';
@@ -36,7 +28,6 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 
-    # To add HTTPS later:
-    # sudo apt install certbot python3-certbot-nginx
+    # To add HTTPS:
     # sudo certbot --nginx -d claude.unnamedui.com
 }
