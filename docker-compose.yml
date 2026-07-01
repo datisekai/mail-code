@@ -13,6 +13,8 @@ services:
         NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-}
     ports:
       - "3005:3000"
+    environment:
+      - PORT=3000
     env_file: .env
     restart: unless-stopped
     depends_on:
