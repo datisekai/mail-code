@@ -1,0 +1,28 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# BMAD
+_bmad/
+_bmad-output/
+
+# Dependencies
+node_modules/
+
+# Backend build
+backend/dist/
+backend/node_modules/
+
+# Frontend build
+frontend/.next/
+frontend/out/
+frontend/node_modules/
+
+# Docker
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+.claude/
